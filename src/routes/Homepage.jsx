@@ -11,7 +11,7 @@ const Homepage = () => {
         className="absolute z-0 top-0 bottom-0 left-0 right-0 w-screen h-screen object-fill"
       />
       <img
-        src="/assets/pink-cloud.svg"
+        src="/assets/blue-cloud.svg"
         alt="pink cloud"
         className="absolute z-[1] top-0 left-0 right-0 w-screen -translate-y-[25%]"
       />
@@ -30,11 +30,11 @@ const Homepage = () => {
         alt="cloud"
         className="absolute z-[1] top-[30%] left-[5%] w-[17.5%]"
       />
-      <div className="absolute top-4 z-[2] mx-auto w-max">
-        <div className="mx-auto w-max text-center text-[7.6875rem] text-white font-[Sacramento] font-normal">
+      <div className="absolute top-4 xl:top-12 z-[2] mx-auto w-max">
+        <div className="mx-auto w-max text-center text-[3.75rem] text-white font-['Press_Start_2P'] font-normal">
           Race Together
         </div>
-        <span className="absolute text-[1.25rem] text-white font-[Lato] font-light bottom-[12.5%] right-[5%]">
+        <span className="absolute text-[1.25rem] text-white font-[Lato] font-light -bottom-[12.5%] right-[10%]">
           Pandora Dev
         </span>
       </div>
@@ -42,7 +42,7 @@ const Homepage = () => {
         <div
           className="capitalize w-[47.6875rem] text-[4.375rem] font-bold leading-[4.375rem]"
           style={{
-            WebkitTextStrokeColor: "black",
+            WebkitTextStrokeColor: "#2A6FAF",
             webkitTextStrokeWidth: "3px",
           }}
         >
@@ -51,7 +51,7 @@ const Homepage = () => {
         <div
           className="my-4 text-[#F9F9FF] text-[1.875rem] font-[Lato] font-bold"
           style={{
-            WebkitTextStrokeColor: "black",
+            WebkitTextStrokeColor: "#2A6FAF",
             webkitTextStrokeWidth: "1px",
           }}
         >
@@ -59,7 +59,7 @@ const Homepage = () => {
         </div>
         <button
           onClick={() => navigate("/login")}
-          className="w-[25rem] h-[4rem] bg-[#E6E7F2] hover:bg-[#CC6363] rounded-full shadow-[inset_5px_5px_4px_rgba(0,0,0,0.25)] text-[#2B2445] hover:text-white hover:-translate-y-[2px] active:translate-y-0 transition-all duration-300 ease-in-out"
+          className="w-[25rem] h-[4rem] bg-[#E6E7F2] hover:bg-[#2192B5] rounded-full shadow-[inset_5px_5px_4px_rgba(0,0,0,0.25)] text-[#2B2445] hover:text-white hover:-translate-y-[2px] active:translate-y-0 transition-all duration-300 ease-in-out"
         >
           <span className=" text-[1.75rem] font-[Lato] font-bold">Start</span>
         </button>

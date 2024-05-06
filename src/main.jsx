@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Root from "./routes/Root";
-import Homepage from "./routes/Homepage";
-import NotFound from "./routes/NotFound";
-import Authentication from "./routes/Authentication";
 import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
+import "./index.css";
+import Authentication from "./routes/Authentication";
+import Homepage from "./routes/Homepage";
+import LobbyPage from "./routes/LobbyPage";
+import NotFound from "./routes/NotFound";
+import Root from "./routes/Root";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
+      },
+      {
+        path: "lobby",
+        element: <LobbyPage />,
       },
     ],
   },
