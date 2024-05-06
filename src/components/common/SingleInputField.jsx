@@ -23,7 +23,7 @@ const SingleInputField = ({
       </label>
       <div
         className={clsx(
-          "w-full h-[1.88rem] lg:h-[2.35rem] bg-white rounded-[0.75rem] border border-solid border-[#7F989A] flex flex-row items-center"
+          "w-full h-[1.88rem] lg:h-[2.35rem] bg-white rounded-[0.75rem] border border-solid border-[#020303] flex flex-row items-center"
         )}
       >
         <input

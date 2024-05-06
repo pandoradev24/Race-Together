@@ -72,7 +72,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    loginMutation.mutate();
+    // loginMutation.mutate();
   };
   return (
     <div className="w-max sm:h-max flex flex-col items-center justify-start sm:justify-center">
@@ -123,7 +123,7 @@ const Login = () => {
           <button
             type="submit"
             onClick={handleLogin}
-            className="mt-4 py-2 w-full bg-[#BC7171] text-white text-[1.125rem] leading-[1.75rem] rounded-[1.25rem]"
+            className="mt-4 py-2 w-full bg-[#2192B5] text-white text-[1.125rem] leading-[1.75rem] rounded-[1.25rem]"
           >
             Sign in
           </button>
@@ -136,6 +136,12 @@ const Login = () => {
             Continue with Google
           </button>
         </form>
+        <div className="mt-4 text-center">
+          <span>Don't have an account? </span>
+          <Link to="/register" className="font-medium hover:underline">
+            Sign up
+          </Link>
+        </div>
       </div>
     </div>
   );
