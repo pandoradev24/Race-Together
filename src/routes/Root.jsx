@@ -8,7 +8,7 @@ const Root = () => {
     window.scrollTo(0, 0);
   }, [pathname]);
   return (
-    <main>
+    <main className="mx-auto w-screen max-w-[120rem] h-screen">
       <Outlet />
     </main>
   );
