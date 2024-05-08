@@ -4,10 +4,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
 import "./index.css";
+import AboutUs from "./routes/AboutUs";
 import Authentication from "./routes/Authentication";
+import CharacterPicker from "./routes/CharacterPicker";
 import Homepage from "./routes/Homepage";
 import LobbyPage from "./routes/LobbyPage";
+import MapPicker from "./routes/MapPicker";
 import NotFound from "./routes/NotFound";
+import RacingWager from "./routes/RacingWager";
 import Root from "./routes/Root";
 
 const router = createBrowserRouter([
@@ -22,6 +26,22 @@ const router = createBrowserRouter([
       {
         path: "lobby",
         element: <LobbyPage />,
+      },
+      {
+        path: "about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "character-picker",
+        element: <CharacterPicker />,
+      },
+      {
+        path: "map-picker",
+        element: <MapPicker />,
+      },
+      {
+        path: "racing-wager",
+        element: <RacingWager />,
       },
     ],
   },

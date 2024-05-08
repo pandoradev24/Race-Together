@@ -3,11 +3,11 @@ import { Outlet } from "react-router-dom";
 
 const Authentication = () => {
   return (
-    <div className="relative w-screen h-screen bg-[#CAE7CD] flex items-center justify-center font-[Inter]">
+    <div className="relative w-full h-screen bg-[#CAE7CD] flex items-center justify-center font-[Inter]">
       <img
         src="/assets/blue-cloud.svg"
         alt="pink cloud"
-        className="absolute z-[1] top-0 left-0 right-0 w-screen -translate-y-[25%]"
+        className="absolute z-[1] top-0 left-0 right-0 w-full -translate-y-[25%]"
       />
       <img
         src="/assets/left-cloud.svg"

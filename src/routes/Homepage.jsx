@@ -4,16 +4,16 @@ import { useNavigate } from "react-router-dom";
 const Homepage = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-screen h-screen relative flex items-center justify-center">
+    <div className="w-full h-full relative flex items-center justify-center">
       <img
         src="/assets/homepage-background.png"
         alt="homepage background"
-        className="absolute z-0 top-0 bottom-0 left-0 right-0 w-screen h-screen object-fill"
+        className="absolute z-0 top-0 bottom-0 left-0 right-0 w-full h-full object-fill"
       />
       <img
         src="/assets/blue-cloud.svg"
         alt="pink cloud"
-        className="absolute z-[1] top-0 left-0 right-0 w-screen -translate-y-[25%]"
+        className="absolute z-[1] top-0 left-0 right-0 w-full -translate-y-[25%]"
       />
       <img
         src="/assets/left-cloud.svg"
