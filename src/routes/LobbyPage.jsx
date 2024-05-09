@@ -23,7 +23,7 @@ const LobbyPage = () => {
           <span className="text-white text-base text-center">mini game</span>
         </Link>
         <Link
-          to=""
+          to="/shop"
           className="relative z-[1] ml-20 flex flex-col items-center justify-center"
         >
           <img
@@ -67,7 +67,7 @@ const LobbyPage = () => {
           <span className="text-white text-base text-center">about us</span>
         </Link>
         <Link
-          to=""
+          to="/tutorial"
           className="relative z-[1] ml-20 flex flex-col items-center justify-center"
         >
           <img

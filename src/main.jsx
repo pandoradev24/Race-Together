@@ -13,6 +13,8 @@ import MapPicker from "./routes/MapPicker";
 import NotFound from "./routes/NotFound";
 import RacingWager from "./routes/RacingWager";
 import Root from "./routes/Root";
+import Tutorial from "./routes/Tutorial";
+import Shop from "./routes/Shop";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: "about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "tutorial",
+        element: <Tutorial />,
+      },
+      {
+        path: "shop",
+        element: <Shop />,
       },
       {
         path: "character-picker",
