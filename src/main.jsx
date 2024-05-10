@@ -15,6 +15,7 @@ import RacingWager from "./routes/RacingWager";
 import Root from "./routes/Root";
 import Tutorial from "./routes/Tutorial";
 import Shop from "./routes/Shop";
+import TrackSelection from "./routes/TrackSelection";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: "racing-wager",
         element: <RacingWager />,
+      },
+      {
+        path: "track-selection",
+        element: <TrackSelection />,
       },
     ],
   },

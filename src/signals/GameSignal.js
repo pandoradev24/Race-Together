@@ -6,7 +6,8 @@ const defaultGame = {
     name: "Hoang",
     image: "/assets/character/hoang-1.png",
   },
-  map: "",
+  map: 1, // 1 or 2
+  raceTrack: "short", // short, medium or long 
 }
 
 export const game = new signal(defaultGame)
