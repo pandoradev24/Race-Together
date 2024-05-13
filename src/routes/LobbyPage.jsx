@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { user } from "../signals/User";
+import { user } from "../signals/UserSignal";
 
 const LobbyPage = () => {
   return (

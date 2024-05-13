@@ -10,20 +10,41 @@ const TrackSelection = () => {
       ...game.value,
       raceTrack: selectedTrack,
     };
+    navigate("#");
   };
   return (
     <div
       className={clsx(
-        "relative w-full h-full bg-bottom bg-cover animate-ltr-linear-infinite font-['Press_Start_2P']",
-        game.value.map === 1
-          ? "bg-[url('/assets/track-selection-1.png')]"
-          : "bg-[url('/assets/track-selection-2.png')]"
+        "relative w-full h-full font-['Press_Start_2P'] flex flex-col"
       )}
     >
-      <div className="absolute bottom-[2.8125rem] right-[4.8125rem] flex flex-col gap-[6vh] text-white text-[2.1875rem] leading-[3.75rem]">
-        <button className="">{`>>Short`}</button>
-        <button className="">{`>>Medium`}</button>
-        <button className="">{`>>Long`}</button>
+      <div
+        className={clsx(
+          "w-full h-[calc(100vh-25rem)] bg-bottom bg-cover bg-repeat-x animate-ltr-linear-infinite",
+          game.value.map === 1
+            ? "bg-[url('/assets/track-selection-1.png')]"
+            : "bg-[url('/assets/track-selection-2.png')]"
+        )}
+      />
+      <div className="w-full h-[25rem] bg-[#bdbdbd] grid grid-flow-col grid-rows-3 gap-y-1 text-white text-[2.1875rem] leading-[3.75rem]">
+        <div className="relative px-[5%] bg-[#282828] flex items-center justify-end">
+          <button
+            onClick={() => handleSelectTrack("short")}
+            className="w-[17.5rem] text-start opacity-80 hover:opacity-100"
+          >{`>>Short`}</button>
+        </div>
+        <div
+          onClick={() => handleSelectTrack("medium")}
+          className="relative px-[5%] bg-[#282828] flex items-center justify-end"
+        >
+          <button className="w-[17.5rem] text-start opacity-80 hover:opacity-100">{`>>Medium`}</button>
+        </div>
+        <div
+          onClick={() => handleSelectTrack("long")}
+          className="relative px-[5%] bg-[#282828] flex items-center justify-end"
+        >
+          <button className="w-[17.5rem] text-start opacity-80 hover:opacity-100">{`>>Long`}</button>
+        </div>
       </div>
       <Link
         to="/racing-wager"

@@ -8,6 +8,11 @@ const defaultGame = {
   },
   map: 1, // 1 or 2
   raceTrack: "short", // short, medium or long 
+  wager: {
+    carId: "",
+    place: 0,
+    amount: 0,
+  },
 }
 
 export const game = new signal(defaultGame)
