@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { game, setRaceTrack } from "../signals/GameSignal";
+import { game, getMap, setRaceTrack } from "../signals/GameSignal";
 
 const TrackSelection = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const TrackSelection = () => {
       <div
         className={clsx(
           "w-full h-[calc(100vh-25rem)] bg-bottom bg-cover bg-repeat-x animate-ltr-linear-infinite",
-          game.value?.map === 1
+          getMap() === 1
             ? "bg-[url('/assets/track-selection-1.png')]"
             : "bg-[url('/assets/track-selection-2.png')]"
         )}
