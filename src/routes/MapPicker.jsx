@@ -1,14 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { game } from "../signals/GameSignal";
+import { setMap } from "../signals/GameSignal";
 
 const MapPicker = () => {
   const navigate = useNavigate();
   const handleMapPick = (selectedMap) => {
-    game.value = {
-      ...game.value,
-      map: selectedMap,
-    };
+    setMap(selectedMap);
     navigate("/racing-wager");
   };
   return (
