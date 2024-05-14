@@ -1,26 +1,44 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { user } from "../signals/UserSignal";
 import Modal from "../components/common/Modal";
-import { Combobox, ComboboxInput } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+  Transition,
+} from "@headlessui/react";
+import { game, setWager } from "../signals/GameSignal";
+import clsx from "clsx";
 
+const defaultOption = {
+  carId: 0,
+  place: 0,
+  amount: 0,
+};
 const options = [10000, 20000, 50000, 100000, 200000];
 
 const RacingWager = () => {
+  const navigate = useNavigate();
   const [openDialog, setOpenDialog] = React.useState(false);
-  const [wagerDetails, setWagerDetails] = React.useState({
-    carId: 0,
-    place: 0,
-    amount: 0,
-  });
+  const [wagerDetails, setWagerDetails] = React.useState(defaultOption);
   const [query, setQuery] = React.useState("");
+  const [error, setError] = React.useState("");
 
   const filteredAmount =
     query === ""
       ? options
       : options.filter((option) => {
-          return option.includes(query);
+          return option.toString().includes(query.toString());
         });
+
+  const handleCloseModal = () => {
+    setOpenDialog(false);
+    setError("");
+    setWagerDetails(defaultOption);
+  };
 
   const handleSelectCar = (carId, place) => {
     setWagerDetails({
@@ -30,6 +48,18 @@ const RacingWager = () => {
     });
     setOpenDialog(true);
   };
+
+  const handleClickOkButton = () => {
+    if (wagerDetails.amount > user.value.money) {
+      setError("Not enough money!");
+    } else {
+      setError("");
+      setWager(wagerDetails);
+      handleCloseModal();
+      navigate("/track-selection");
+    }
+  };
+
   return (
     <div className="relative w-full h-full bg-[#2B2B2B] flex items-center justify-center font-['Press_Start_2P']">
       <div className="absolute z-[1] top-10 right-[3.125rem] flex flex-row">
@@ -49,7 +79,7 @@ const RacingWager = () => {
           className="mb-20 text-[2.1875rem] text-center text-white font-normal leading-[5rem] uppercase drop-shadow-[0_1.5px_1.5px_rgba(0,0,0,1)]"
           style={{
             WebkitTextStrokeColor: "#000000",
-            webkitTextStrokeWidth: "1px",
+            WebkitTextStrokeWidth: "1px",
           }}
         >
           You bet
@@ -58,19 +88,19 @@ const RacingWager = () => {
           <div className="h-[28.8125rem] grid grid-flow-col grid-rows-5 text-[2.1825rem] text-[#514A4A] font-normal">
             <div className="flex flex-row items-center gap-[3.1825rem]">
               <button
-                onClick={() => handleSelectCar("blue", 1)}
+                onClick={() => handleSelectCar("huy-car", 1)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 1
               </button>
               <button
-                onClick={() => handleSelectCar("blue", 2)}
+                onClick={() => handleSelectCar("huy-car", 2)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 2
               </button>
               <button
-                onClick={() => handleSelectCar("blue", 3)}
+                onClick={() => handleSelectCar("huy-car", 3)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 3
@@ -78,19 +108,19 @@ const RacingWager = () => {
             </div>
             <div className="flex flex-row items-center gap-[3.1825rem]">
               <button
-                onClick={() => handleSelectCar("yellow", 1)}
+                onClick={() => handleSelectCar("hoang-car", 1)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 1
               </button>
               <button
-                onClick={() => handleSelectCar("yellow", 2)}
+                onClick={() => handleSelectCar("hoang-car", 2)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 2
               </button>
               <button
-                onClick={() => handleSelectCar("yellow", 3)}
+                onClick={() => handleSelectCar("hoang-car", 3)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 3
@@ -98,19 +128,19 @@ const RacingWager = () => {
             </div>
             <div className="flex flex-row items-center gap-[3.1825rem]">
               <button
-                onClick={() => handleSelectCar("red", 1)}
+                onClick={() => handleSelectCar("son-car", 1)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 1
               </button>
               <button
-                onClick={() => handleSelectCar("red", 2)}
+                onClick={() => handleSelectCar("son-car", 2)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 2
               </button>
               <button
-                onClick={() => handleSelectCar("red", 3)}
+                onClick={() => handleSelectCar("son-car", 3)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 3
@@ -118,19 +148,19 @@ const RacingWager = () => {
             </div>
             <div className="flex flex-row items-center gap-[3.1825rem]">
               <button
-                onClick={() => handleSelectCar("orange", 1)}
+                onClick={() => handleSelectCar("hue-car", 1)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 1
               </button>
               <button
-                onClick={() => handleSelectCar("orange", 2)}
+                onClick={() => handleSelectCar("hue-car", 2)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 2
               </button>
               <button
-                onClick={() => handleSelectCar("orange", 3)}
+                onClick={() => handleSelectCar("hue-car", 3)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 3
@@ -138,19 +168,19 @@ const RacingWager = () => {
             </div>
             <div className="flex flex-row items-center gap-[3.1825rem]">
               <button
-                onClick={() => handleSelectCar("grey", 1)}
+                onClick={() => handleSelectCar("anh-car", 1)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 1
               </button>
               <button
-                onClick={() => handleSelectCar("grey", 2)}
+                onClick={() => handleSelectCar("anh-car", 2)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 2
               </button>
               <button
-                onClick={() => handleSelectCar("grey", 3)}
+                onClick={() => handleSelectCar("anh-car", 3)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 3
@@ -162,25 +192,79 @@ const RacingWager = () => {
       </div>
       <Modal isOpen={openDialog} setIsOpen={setOpenDialog}>
         <div className="relative mx-auto w-[34.4375rem] h-[25.4375rem] bg-white flex flex-col items-center">
-          <button className="absolute z-[1] top-2 right-4 text-black text-[1.875rem] font-['Press_Start_2P'] font-normal">
+          <button
+            onClick={handleCloseModal}
+            className="absolute z-[1] top-2 right-4 text-black text-[1.875rem] font-['Press_Start_2P'] font-normal"
+          >
             x
           </button>
           <h1 className="mt-[2.6875rem] text-[1.875rem] font-['Press_Start_2P'] font-normal">
             Chon so tien
           </h1>
-          <div className="px-[7.5rem] w-full">
-            <Combobox
+          <div className="mt-[2.6875rem] w-full flex justify-center">
+            <Listbox
               value={wagerDetails.amount}
-              onChange={(e) =>
-                setWagerDetails({ ...wagerDetails, amount: e.target.value })
+              onChange={(value) =>
+                setWagerDetails({ ...wagerDetails, amount: value })
               }
             >
-              <ComboboxInput
-                aria-label="Wager"
-                displayValue={wagerDetails.amount}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </Combobox>
+              <ListboxButton
+                className={clsx(
+                  "relative block px-10 w-[17.5rem] h-[3.75rem] bg-white rounded-[0.5rem] border border-solid border-[#333/10] shadow-xl text-[#333] text-base font-[Montserrat] leading-[1.21875] focus:outline-none",
+                  "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25",
+                  "flex items-center justify-start"
+                )}
+              >
+                {wagerDetails.amount
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                <ChevronDownIcon
+                  className="group pointer-events-none absolute right-2.5 size-6 fill-[#333]"
+                  aria-hidden="true"
+                />
+              </ListboxButton>
+              <Transition
+                leave="transition ease-in duration-100"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <ListboxOptions
+                  anchor="bottom"
+                  className="w-[var(--button-width)] rounded-[0.5rem] border border-solid border-[#333/10] bg-white shadow-xl p-2 [--anchor-gap:var(--spacing-1)] focus:outline-none"
+                >
+                  {filteredAmount.map((option, index) => (
+                    <ListboxOption
+                      key={index}
+                      value={option}
+                      className="group flex items-center gap-2 rounded-lg my-1 py-2 px-8 select-none hover:cursor-pointer hover:bg-[#333]/10"
+                    >
+                      <div className="text-base text-[#333] font-[Montserrat]">
+                        {option
+                          .toString()
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                      </div>
+                    </ListboxOption>
+                  ))}
+                </ListboxOptions>
+              </Transition>
+            </Listbox>
+          </div>
+          <div
+            className={clsx(
+              error != "" ? "mt-8 w-full flex justify-center" : "hidden"
+            )}
+          >
+            <span className="text-red-500 font-['Press_Start_2P']">
+              {error}
+            </span>
+          </div>
+          <div className="absolute bottom-[3.3125rem] w-full flex justify-center">
+            <button
+              onClick={handleClickOkButton}
+              className="w-[11.25rem] h-[2.9375rem] bg-[#8ABEFB] rounded-[0.75rem] text-[1.25rem] text-white font-['Press_Start_2P'] font-normal"
+            >
+              ok
+            </button>
           </div>
         </div>
       </Modal>
@@ -189,21 +273,3 @@ const RacingWager = () => {
 };
 
 export default RacingWager;
-
-const ComboBox = () => {
-  const [selected, setSelected] = React.useState(null);
-  return (
-    <Combobox value={selected} onChange={setSelected}>
-      <Combobox.Button className="w-full h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100">
-        {selected || "Chon so tien"}
-      </Combobox.Button>
-      <Combobox.Options className="w-full">
-        {options.map((option) => (
-          <Combobox.Option key={option} value={option}>
-            {option}
-          </Combobox.Option>
-        ))}
-      </Combobox.Options>
-    </Combobox>
-  );
-};

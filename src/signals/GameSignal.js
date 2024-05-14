@@ -20,3 +20,19 @@ export const game = new signal(defaultGame)
 export function getCharacter() {
   return game.value.character.image;
 }
+
+export function setCharacter(character) {
+  game.value.character = character;
+}
+
+export function setWager(wager) {
+  game.value.wager = wager;
+}
+
+export function setRaceTrack(track) {
+  game.value.raceTrack = track;
+}
+
+export function setMap(map) {
+  game.value.map = map;
+}
