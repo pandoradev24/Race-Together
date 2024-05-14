@@ -31,7 +31,7 @@ const MapPicker = () => {
         </h1>
         <div className="flex flex-row items-center justify-center gap-28">
           <button
-            onClick={() => handleMapPick("/assets/map-picker-1.png")}
+            onClick={() => handleMapPick(1)}
             className="relative p-2 w-[15.625rem] h-[20.8125rem] bg-[#D9D9D9] opacity-50 hover:opacity-100 flex items-center justify-center"
           >
             <img src="/assets/polygon.svg" alt="" className="absolute z-[2]" />
@@ -42,7 +42,7 @@ const MapPicker = () => {
             />
           </button>
           <button
-            onClick={() => handleMapPick("/assets/map-picker-2.png")}
+            onClick={() => handleMapPick(2)}
             className="relative p-2 w-[15.625rem] h-[20.8125rem] bg-[#D9D9D9] opacity-50 hover:opacity-100 flex items-center justify-center"
           >
             <img src="/assets/polygon.svg" alt="" className="absolute z-[2]" />
