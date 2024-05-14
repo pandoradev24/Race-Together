@@ -36,3 +36,7 @@ export function setRaceTrack(track) {
 export function setMap(map) {
   game.value.map = map;
 }
+
+export function getMap() {
+  return game.value.map;
+}
