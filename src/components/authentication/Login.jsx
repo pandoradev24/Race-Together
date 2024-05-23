@@ -84,7 +84,7 @@ const Login = () => {
     if (password.value === "") {
       errors = { ...errors, password: "Password is required" };
     } else {
-      if (email === "admin@localhost" && password.value === "admin") {
+      if (email === "pandoradev24@gmail.com" && password.value === "12345678") {
         if (localStorage.getItem("money") === null) {
           localStorage.setItem("money", user.value.money);
         }
