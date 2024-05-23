@@ -13,7 +13,7 @@ export default function Countdown({ countdown, setCountdown }) {
 
   return (
     <p
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-9xl text-red-600 z-10"
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-9xl text-white z-10"
       style={{
         display: countdown < 0 ? "none" : "block",
       }}

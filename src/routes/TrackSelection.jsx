@@ -9,6 +9,8 @@ const TrackSelection = () => {
     setRaceTrack(selectedTrack);
     navigate("/racing");
   };
+
+  console.log(getMap());
   return (
     <div
       className={clsx(
@@ -35,17 +37,17 @@ const TrackSelection = () => {
             className="w-[17.5rem] text-start opacity-80 hover:opacity-100"
           >{`>>Short`}</button>
         </div>
-        <div
-          onClick={() => handleSelectTrack("medium")}
-          className="relative px-[5%] bg-[#282828] flex items-center justify-end"
-        >
-          <button className="w-[17.5rem] text-start opacity-80 hover:opacity-100">{`>>Medium`}</button>
+        <div className="relative px-[5%] bg-[#282828] flex items-center justify-end">
+          <button
+            onClick={() => handleSelectTrack("medium")}
+            className="w-[17.5rem] text-start opacity-80 hover:opacity-100"
+          >{`>>Medium`}</button>
         </div>
-        <div
-          onClick={() => handleSelectTrack("long")}
-          className="relative px-[5%] bg-[#282828] flex items-center justify-end"
-        >
-          <button className="w-[17.5rem] text-start opacity-80 hover:opacity-100">{`>>Long`}</button>
+        <div className="relative px-[5%] bg-[#282828] flex items-center justify-end">
+          <button
+            onClick={() => handleSelectTrack("long")}
+            className="w-[17.5rem] text-start opacity-80 hover:opacity-100"
+          >{`>>Long`}</button>
         </div>
       </div>
       <Link
