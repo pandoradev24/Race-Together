@@ -176,13 +176,17 @@ const RacingPage = () => {
     navigate("/lobby");
   };
 
-  console.log(finishedRank);
   return (
     <div
       className={clsx(
         "relative w-full h-full font-['Press_Start_2P'] flex flex-col overflow-hidden"
       )}
     >
+      <img
+        src="/assets/hamburger-icon.svg"
+        alt=""
+        className="absolute z-[1] h-10 top-10 right-[3.125rem]"
+      />
       {countdown <= 0 && countdown > -Infinity && (
         <>
           <div className="absolute top-10 left-[3.4575rem]">
