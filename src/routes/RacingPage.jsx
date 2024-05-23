@@ -7,6 +7,7 @@ import Countdown from "../components/Countdown";
 import Modal from "../components/common/Modal";
 import {
   getCharacter,
+  getCharacterImage,
   getMap,
   getRacingTime,
   getWager,
@@ -153,7 +154,7 @@ const RacingPage = () => {
     if (cars[finishedRank[rank - 1]?.index]?.name === getCharacter().name) {
       return getCharacter().image;
     }
-    return getCharacter(cars[finishedRank[rank - 1].index].name);
+    return getCharacterImage(cars[finishedRank[rank - 1]?.index]?.name);
   };
 
   const getAward = () => {

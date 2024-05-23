@@ -1,23 +1,5 @@
 import { signal } from "@preact/signals-react"
 
-const cars = {
-  "anh-1": "/assets/car/anh-1.png",
-  "anh-2": "/assets/car/anh-1.png",
-  "anh-3": "/assets/car/anh-1.png",
-  "hoang-1": "/assets/car/hoang-1.png",
-  "hoang-2": "/assets/car/hoang-1.png",
-  "hoang-3": "/assets/car/hoang-1.png",
-  "hue-1": "/assets/car/hue-1.png",
-  "hue-2": "/assets/car/hue-1.png",
-  "hue-3": "/assets/car/hue-1.png",
-  "huy-1": "/assets/car/huy-1.png",
-  "huy-2": "/assets/car/huy-1.png",
-  "huy-3": "/assets/car/huy-1.png",
-  "son-1": "/assets/car/son-1.png",
-  "son-2": "/assets/car/son-1.png",
-  "son-3": "/assets/car/son-1.png",
-}
-
 const defaultGame = {
   character: {
     id: "hoang-1",
@@ -39,6 +21,10 @@ export function getCharacterImg() {
   return game.value.character.image;
 }
 
+export function getCharacter() {
+  return game.value.character;
+}
+
 export function setCharacter(character) {
   game.value.character = character;
 }
@@ -56,11 +42,12 @@ export function setRaceTrack(track) {
 }
 
 export function setMap(map) {
+  localStorage.setItem("map", map);
   game.value.map = map;
 }
 
 export function getMap() {
-  return game.value.map;
+  return parseInt(localStorage.getItem("map") || 1);
 }
 
 export function getRacingTime() {
@@ -81,7 +68,7 @@ export function getRacingTime() {
   return time;
 }
 
-export function getCharacter(name) {
+export function getCharacterImage(name) {
   switch(name) {
     case "Hoang":
       return "/assets/character/hoang-1.png";
