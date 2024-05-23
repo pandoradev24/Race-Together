@@ -1,21 +1,25 @@
 import clsx from "clsx";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { game, getMap, setRaceTrack } from "../signals/GameSignal";
+import { getMap, setRaceTrack } from "../signals/GameSignal";
 
 const TrackSelection = () => {
   const navigate = useNavigate();
   const handleSelectTrack = (selectedTrack) => {
     setRaceTrack(selectedTrack);
-    navigate("#");
+    navigate("/racing");
   };
-  console.log(game.value);
   return (
     <div
       className={clsx(
         "relative w-full h-full font-['Press_Start_2P'] flex flex-col"
       )}
     >
+      <img
+        src="/assets/hamburger-icon.svg"
+        alt=""
+        className="absolute z-[1] h-10 top-10 right-[3.125rem]"
+      />
       <div
         className={clsx(
           "w-full h-[calc(100vh-25rem)] bg-bottom bg-cover bg-repeat-x animate-ltr-linear-infinite",

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Carousel from "../components/common/Carousel";
 import { game } from "../signals/GameSignal";
 
@@ -106,6 +106,10 @@ const CharacterPicker = () => {
         alt=""
         className="absolute z-[1] h-10 top-10 right-[3.125rem]"
       />
+      <Link
+        to="/lobby"
+        className="absolute z-[1] bottom-10 left-[3.125rem] text-white text-[2.1875rem] font-['Press_Start_2P'] font-normal"
+      >{`<<back`}</Link>
       <div className="w-full xl:w-[85%] 2xl:w-[70%]">
         <h1 className="mb-20 text-[2.1875rem] text-center text-white font-['Press_Start_2P'] font-normal leading-[5rem]">
           Select your characters

@@ -24,7 +24,7 @@ const MapPicker = () => {
           className="mb-20 text-[2.1875rem] text-center text-white font-['Press_Start_2P'] font-normal leading-[5rem] drop-shadow-[0_1.5px_1.5px_rgba(0,0,0,1)]"
           style={{
             WebkitTextStrokeColor: "#000000",
-            webkitTextStrokeWidth: "1px",
+            WebkitTextStrokeWidth: "1px",
           }}
         >
           Choose where your adventure begins

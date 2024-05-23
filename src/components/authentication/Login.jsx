@@ -1,19 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import SingleInputField from "../common/SingleInputField";
 import { Checkbox } from "@mui/material";
 import clsx from "clsx";
+import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { user } from "../../signals/UserSignal";
+import SingleInputField from "../common/SingleInputField";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState({ value: "", visible: false });
-  const [error, setError] = useState({});
+  const [error, setError] = useState({ email: "", password: "" });
   const rememberAccountRef = useRef(null);
 
   useEffect(() => {
     const rememberAccount = localStorage.getItem("rememberAccount");
-    setEmail(rememberAccount);
+    setEmail(rememberAccount || "");
   }, []);
 
   const handleInputChange = (e, id) => {
@@ -72,7 +73,31 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // loginMutation.mutate();
+    setError({ email: "", password: "" });
+
+    let errors = { email: "", password: "" };
+
+    if (email === "") {
+      errors = { ...errors, email: "Email is required" };
+    }
+
+    if (password.value === "") {
+      errors = { ...errors, password: "Password is required" };
+    } else {
+      if (email === "admin@localhost" && password.value === "admin") {
+        if (localStorage.getItem("money") === null) {
+          localStorage.setItem("money", user.value.money);
+        }
+        navigate("/lobby");
+      } else {
+        if (email === "") {
+        } else {
+          errors = { ...errors, password: "Invalid email or password" };
+        }
+      }
+    }
+
+    setError(errors);
   };
   return (
     <div className="w-max sm:h-max flex flex-col items-center justify-start sm:justify-center">
@@ -100,7 +125,10 @@ const Login = () => {
             <div className="flex flex-row items-center">
               <Checkbox
                 inputRef={rememberAccountRef}
-                sx={{ color: "#4D4F4F", "&.Mui-checked": { color: "#4D4F4F" } }}
+                sx={{
+                  color: "#4D4F4F",
+                  "&.Mui-checked": { color: "#4D4F4F" },
+                }}
               />
               <p
                 className={clsx(

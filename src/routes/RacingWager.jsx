@@ -1,8 +1,3 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { user } from "../signals/UserSignal";
-import Modal from "../components/common/Modal";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import {
   Listbox,
   ListboxButton,
@@ -10,8 +5,13 @@ import {
   ListboxOptions,
   Transition,
 } from "@headlessui/react";
-import { game, setWager } from "../signals/GameSignal";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Modal from "../components/common/Modal";
+import { setWager } from "../signals/GameSignal";
+import { getMoney, user } from "../signals/UserSignal";
 
 const defaultOption = {
   carId: 0,
@@ -40,10 +40,10 @@ const RacingWager = () => {
     setWagerDetails(defaultOption);
   };
 
-  const handleSelectCar = (carId, place) => {
+  const handleSelectCar = (carOwner, place) => {
     setWagerDetails({
       ...wagerDetails,
-      carId,
+      carOwner,
       place,
     });
     setOpenDialog(true);
@@ -64,7 +64,10 @@ const RacingWager = () => {
     <div className="relative w-full h-full bg-[#2B2B2B] flex items-center justify-center font-['Press_Start_2P']">
       <div className="absolute z-[1] top-10 right-[3.125rem] flex flex-row">
         <span className="text-white text-[1.875rem] font-normal">
-          $:{user.value.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+          $:
+          {getMoney()
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
         </span>
         <img src="/assets/hamburger-icon.svg" alt="" className="ml-10 h-10" />
       </div>
@@ -88,19 +91,19 @@ const RacingWager = () => {
           <div className="h-[28.8125rem] grid grid-flow-col grid-rows-5 text-[2.1825rem] text-[#514A4A] font-normal">
             <div className="flex flex-row items-center gap-[3.1825rem]">
               <button
-                onClick={() => handleSelectCar("huy-car", 1)}
+                onClick={() => handleSelectCar("Huy", 1)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 1
               </button>
               <button
-                onClick={() => handleSelectCar("huy-car", 2)}
+                onClick={() => handleSelectCar("Huy", 2)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 2
               </button>
               <button
-                onClick={() => handleSelectCar("huy-car", 3)}
+                onClick={() => handleSelectCar("Huy", 3)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 3
@@ -108,19 +111,19 @@ const RacingWager = () => {
             </div>
             <div className="flex flex-row items-center gap-[3.1825rem]">
               <button
-                onClick={() => handleSelectCar("hoang-car", 1)}
+                onClick={() => handleSelectCar("Hoang", 1)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 1
               </button>
               <button
-                onClick={() => handleSelectCar("hoang-car", 2)}
+                onClick={() => handleSelectCar("Hoang", 2)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 2
               </button>
               <button
-                onClick={() => handleSelectCar("hoang-car", 3)}
+                onClick={() => handleSelectCar("Hoang", 3)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 3
@@ -128,19 +131,19 @@ const RacingWager = () => {
             </div>
             <div className="flex flex-row items-center gap-[3.1825rem]">
               <button
-                onClick={() => handleSelectCar("son-car", 1)}
+                onClick={() => handleSelectCar("Son", 1)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 1
               </button>
               <button
-                onClick={() => handleSelectCar("son-car", 2)}
+                onClick={() => handleSelectCar("Son", 2)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 2
               </button>
               <button
-                onClick={() => handleSelectCar("son-car", 3)}
+                onClick={() => handleSelectCar("Son", 3)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 3
@@ -148,19 +151,19 @@ const RacingWager = () => {
             </div>
             <div className="flex flex-row items-center gap-[3.1825rem]">
               <button
-                onClick={() => handleSelectCar("hue-car", 1)}
+                onClick={() => handleSelectCar("Hue", 1)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 1
               </button>
               <button
-                onClick={() => handleSelectCar("hue-car", 2)}
+                onClick={() => handleSelectCar("Hue", 2)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 2
               </button>
               <button
-                onClick={() => handleSelectCar("hue-car", 3)}
+                onClick={() => handleSelectCar("Hue", 3)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 3
@@ -168,19 +171,19 @@ const RacingWager = () => {
             </div>
             <div className="flex flex-row items-center gap-[3.1825rem]">
               <button
-                onClick={() => handleSelectCar("anh-car", 1)}
+                onClick={() => handleSelectCar("Anh", 1)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 1
               </button>
               <button
-                onClick={() => handleSelectCar("anh-car", 2)}
+                onClick={() => handleSelectCar("Anh", 2)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 2
               </button>
               <button
-                onClick={() => handleSelectCar("anh-car", 3)}
+                onClick={() => handleSelectCar("Anh", 3)}
                 className="w-[8.5rem] h-[3rem] bg-[#D9D9D9] opacity-80 hover:opacity-100"
               >
                 3
