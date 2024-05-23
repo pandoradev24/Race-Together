@@ -1,15 +1,14 @@
 import clsx from "clsx";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { game, getMap, setRaceTrack } from "../signals/GameSignal";
+import { getMap, setRaceTrack } from "../signals/GameSignal";
 
 const TrackSelection = () => {
   const navigate = useNavigate();
   const handleSelectTrack = (selectedTrack) => {
     setRaceTrack(selectedTrack);
-    navigate("#");
+    navigate("/racing");
   };
-  console.log(game.value);
   return (
     <div
       className={clsx(

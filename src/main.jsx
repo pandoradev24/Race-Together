@@ -16,6 +16,9 @@ import Root from "./routes/Root";
 import Tutorial from "./routes/Tutorial";
 import Shop from "./routes/Shop";
 import TrackSelection from "./routes/TrackSelection";
+import Recovery from "./components/authentication/Recovery";
+import RacingPage from "./routes/RacingPage";
+import Minigame from "./routes/Minigame";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,10 @@ const router = createBrowserRouter([
         element: <Shop />,
       },
       {
+        path: "minigame",
+        element: <Minigame />,
+      },
+      {
         path: "character-picker",
         element: <CharacterPicker />,
       },
@@ -58,6 +65,10 @@ const router = createBrowserRouter([
         path: "track-selection",
         element: <TrackSelection />,
       },
+      {
+        path: "racing",
+        element: <RacingPage />,
+      },
     ],
   },
   {
@@ -71,6 +82,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/recovery",
+        element: <Recovery />,
       },
     ],
   },

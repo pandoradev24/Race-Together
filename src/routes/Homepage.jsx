@@ -30,6 +30,11 @@ const Homepage = () => {
         alt="cloud"
         className="absolute z-[1] top-[30%] left-[5%] w-[17.5%]"
       />
+      <img
+        src="/assets/teen-warning.png"
+        alt=""
+        className="absolute z-[1] bottom-[15%] left-[2.5%]"
+      />
       <div className="absolute top-4 xl:top-12 z-[2] mx-auto w-max">
         <div className="mx-auto w-max text-center text-[3.75rem] text-white font-['Press_Start_2P'] font-normal">
           Race Together
@@ -43,7 +48,7 @@ const Homepage = () => {
           className="capitalize w-[47.6875rem] text-[4.375rem] font-bold leading-[4.375rem]"
           style={{
             WebkitTextStrokeColor: "#2A6FAF",
-            webkitTextStrokeWidth: "3px",
+            WebkitTextStrokeWidth: "3px",
           }}
         >
           may this journey lead us starward
@@ -52,7 +57,7 @@ const Homepage = () => {
           className="my-4 text-[#F9F9FF] text-[1.875rem] font-[Lato] font-bold"
           style={{
             WebkitTextStrokeColor: "#2A6FAF",
-            webkitTextStrokeWidth: "1px",
+            WebkitTextStrokeWidth: "1px",
           }}
         >
           Bet on Speed, Win with Precision

@@ -1,5 +1,23 @@
 import { signal } from "@preact/signals-react"
 
+const cars = {
+  "anh-1": "/assets/car/anh-1.png",
+  "anh-2": "/assets/car/anh-1.png",
+  "anh-3": "/assets/car/anh-1.png",
+  "hoang-1": "/assets/car/hoang-1.png",
+  "hoang-2": "/assets/car/hoang-1.png",
+  "hoang-3": "/assets/car/hoang-1.png",
+  "hue-1": "/assets/car/hue-1.png",
+  "hue-2": "/assets/car/hue-1.png",
+  "hue-3": "/assets/car/hue-1.png",
+  "huy-1": "/assets/car/huy-1.png",
+  "huy-2": "/assets/car/huy-1.png",
+  "huy-3": "/assets/car/huy-1.png",
+  "son-1": "/assets/car/son-1.png",
+  "son-2": "/assets/car/son-1.png",
+  "son-3": "/assets/car/son-1.png",
+}
+
 const defaultGame = {
   character: {
     id: "hoang-1",
@@ -9,7 +27,7 @@ const defaultGame = {
   map: 1, // 1 or 2
   raceTrack: "short", // short, medium or long 
   wager: {
-    carId: "",
+    carOwner: "",
     place: 0,
     amount: 0,
   },
@@ -17,7 +35,7 @@ const defaultGame = {
 
 export const game = new signal(defaultGame)
 
-export function getCharacter() {
+export function getCharacterImg() {
   return game.value.character.image;
 }
 
@@ -27,6 +45,10 @@ export function setCharacter(character) {
 
 export function setWager(wager) {
   game.value.wager = wager;
+}
+
+export function getWager() {
+  return game.value.wager;
 }
 
 export function setRaceTrack(track) {
@@ -39,4 +61,39 @@ export function setMap(map) {
 
 export function getMap() {
   return game.value.map;
+}
+
+export function getRacingTime() {
+  let time = 0;
+  switch (game.value.raceTrack) {
+    case "short":
+      time = 20;
+      break;
+    case "medium":
+      time = 30;
+      break;
+    case "long":
+      time = 45;
+      break;
+    default:
+      time = 15;
+  }
+  return time;
+}
+
+export function getCharacter(name) {
+  switch(name) {
+    case "Hoang":
+      return "/assets/character/hoang-1.png";
+    case "Son":
+      return "/assets/character/son-1.png";
+    case "Hue":
+      return "/assets/character/hue-1.png";
+    case "Huy":
+      return "/assets/character/huy-1.png";
+    case "Anh":
+      return "/assets/character/anh-1.png";
+    default:
+      return "/assets/character/hoang-1.png";
+  }
 }

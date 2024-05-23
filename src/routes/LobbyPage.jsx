@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { user } from "../signals/UserSignal";
+import { getMoney } from "../signals/UserSignal";
 
 const LobbyPage = () => {
   return (
@@ -12,7 +12,7 @@ const LobbyPage = () => {
       />
       <div className="flex flex-row">
         <Link
-          to=""
+          to="/minigame"
           className="relative z-[1] flex flex-col items-center justify-center"
         >
           <img
@@ -36,7 +36,9 @@ const LobbyPage = () => {
         <div className="ml-auto relative z-[1] flex flex-row">
           <span className="text-white text-[1.875rem]">
             $:
-            {user.value.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+            {getMoney()
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
           </span>
           <img src="/assets/hamburger-icon.svg" alt="" className="ml-10 h-10" />
         </div>
