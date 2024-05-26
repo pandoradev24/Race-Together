@@ -7,7 +7,7 @@ const Tutorial = () => {
       <img
         src="/assets/hamburger-icon.svg"
         alt=""
-        className="absolute z-[1] h-10 top-10 right-[3.125rem]"
+        className="absolute z-[1] h-10 top-10 right-[3.125rem] cursor-pointer"
       />
       <div className="absolute z-[1] top-24">
         <h1 className="text-[2.1875rem] text-center text-white font-normal leading-[5rem]">

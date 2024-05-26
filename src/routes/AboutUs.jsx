@@ -2,12 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const AboutUs = () => {
+  const clickSound = new Audio("/audio/click.mp3");
+  const startClickSound = () => {
+    clickSound.play();
+  };
   return (
     <div className="relative w-full h-full bg-[#2B2B2B] flex items-center justify-center font-['Press_Start_2P']">
       <img
         src="/assets/hamburger-icon.svg"
         alt=""
-        className="absolute z-[1] h-10 top-10 right-[3.125rem]"
+        className="absolute z-[1] h-10 top-10 right-[3.125rem] cursor-pointer"
       />
       <div className="absolute z-[1] top-24">
         <h1 className="text-[2.1875rem] text-center text-white font-normal leading-[5rem]">
@@ -16,6 +20,7 @@ const AboutUs = () => {
       </div>
       <Link
         to="/lobby"
+        onClick={startClickSound}
         className="absolute z-[1] bottom-10 left-[3.125rem] text-white text-[2.1875rem] font-normal"
       >
         {`<<back`}

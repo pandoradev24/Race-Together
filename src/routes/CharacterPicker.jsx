@@ -91,6 +91,7 @@ const CharacterPicker = () => {
   });
 
   const handleOkButtonClick = () => {
+    startClickSound();
     if (selectedCharacter.id !== "") {
       game.value = {
         ...game.value,
@@ -99,15 +100,21 @@ const CharacterPicker = () => {
       navigate("/map-picker");
     }
   };
+
+  const clickSound = new Audio("/audio/click.mp3");
+  const startClickSound = () => {
+    clickSound.play();
+  };
   return (
     <div className="relative w-full h-full bg-[#2B2B2B] flex items-center justify-center">
       <img
         src="/assets/hamburger-icon.svg"
         alt=""
-        className="absolute z-[1] h-10 top-10 right-[3.125rem]"
+        className="absolute z-[1] h-10 top-10 right-[3.125rem] cursor-pointer"
       />
       <Link
         to="/lobby"
+        onClick={startClickSound}
         className="absolute z-[1] bottom-10 left-[3.125rem] text-white text-[2.1875rem] font-['Press_Start_2P'] font-normal"
       >{`<<back`}</Link>
       <div className="w-full xl:w-[85%] 2xl:w-[70%]">

@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { getMoney } from "../signals/UserSignal";
 
 const LobbyPage = () => {
+  const clickSound = new Audio("/audio/click.mp3");
+  const startClickSound = () => {
+    clickSound.play();
+  };
   return (
     <div className="relative px-[3.125rem] py-10 w-full h-full font-['Press_Start_2P']">
       <img
@@ -13,6 +17,7 @@ const LobbyPage = () => {
       <div className="flex flex-row">
         <Link
           to="/minigame"
+          onClick={startClickSound}
           className="relative z-[1] flex flex-col items-center justify-center"
         >
           <img
@@ -24,6 +29,7 @@ const LobbyPage = () => {
         </Link>
         <Link
           to="/shop"
+          onClick={startClickSound}
           className="relative z-[1] ml-20 flex flex-col items-center justify-center"
         >
           <img
@@ -40,12 +46,16 @@ const LobbyPage = () => {
               .toString()
               .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
           </span>
-          <img src="/assets/hamburger-icon.svg" alt="" className="ml-10 h-10" />
+          <img
+            src="/assets/hamburger-icon.svg"
+            alt=""
+            className="ml-10 h-10 cursor-pointer"
+          />
         </div>
       </div>
       <div className="mt-10">
         <Link
-          to=""
+          to="#"
           className="relative z-[1] w-max flex flex-col items-center justify-center"
         >
           <img
@@ -59,6 +69,7 @@ const LobbyPage = () => {
       <div className="absolute bottom-10 flex flex-row">
         <Link
           to="/about-us"
+          onClick={startClickSound}
           className="relative z-[1] flex flex-col items-center justify-center"
         >
           <img
@@ -70,6 +81,7 @@ const LobbyPage = () => {
         </Link>
         <Link
           to="/tutorial"
+          onClick={startClickSound}
           className="relative z-[1] ml-20 flex flex-col items-center justify-center"
         >
           <img
@@ -84,6 +96,7 @@ const LobbyPage = () => {
         <div className="relative w-full h-full flex flex-col items-center">
           <Link
             to="/character-picker"
+            onClick={startClickSound}
             className="absolute bottom-[25%] z-[1] text-white text-center text-[3rem] leading-[5rem] uppercase underline drop-shadow-[0_1.5px_1.5px_rgba(0,0,0,1)]"
           >
             Play

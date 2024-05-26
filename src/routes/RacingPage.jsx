@@ -13,6 +13,7 @@ import {
   getWager,
 } from "../signals/GameSignal";
 import { changeMoney } from "../signals/UserSignal";
+import usePlaySound from "../hooks/usePlaySound";
 
 const cars = [
   {
@@ -49,6 +50,13 @@ const RacingPage = () => {
   const [showPodium, setShowPodium] = useState(false);
   const [awardModal, setAwardModal] = useState(false);
 
+  const playRacingSound = usePlaySound(
+    "/audio/racing.mp3",
+    getRacingTime() * 1000 + 500
+  );
+
+  const playCheeringSound = usePlaySound("/audio/cheering.mp3", 23 * 1000);
+
   useEffect(() => {
     setOpen(true);
   }, []);
@@ -77,6 +85,7 @@ const RacingPage = () => {
       setFinishedRank(ranks);
       const showPodiumTimeout = setTimeout(() => {
         setShowPodium(true);
+        playCheeringSound();
         clearTimeout(showPodiumTimeout);
       }, 3000);
       return;
@@ -133,6 +142,10 @@ const RacingPage = () => {
     setCountdown(3);
     setSeconds(getRacingTime());
     start();
+    const startSound = setTimeout(() => {
+      playRacingSound();
+      clearTimeout(startSound);
+    }, 3000);
   };
 
   const calculateRanks = () => {
@@ -172,11 +185,16 @@ const RacingPage = () => {
     return check ? wager.amount : -wager.amount;
   };
 
+  const clickSound = new Audio("/audio/click.mp3");
+  const startClickSound = () => {
+    clickSound.play();
+  };
+
   const handleClickOkButton = () => {
+    startClickSound();
     changeMoney(getAward());
     navigate("/lobby");
   };
-
   return (
     <div
       className={clsx(
@@ -186,7 +204,7 @@ const RacingPage = () => {
       <img
         src="/assets/hamburger-icon.svg"
         alt=""
-        className="absolute z-[1] h-10 top-10 right-[3.125rem]"
+        className="absolute z-[1] h-10 top-10 right-[3.125rem] cursor-pointer"
       />
       {countdown <= 0 && countdown > -Infinity && (
         <>
@@ -298,7 +316,7 @@ const RacingPage = () => {
           <div className="absolute w-[10rem] -top-[7.5rem] left-[4.5rem] flex justify-center">
             <img src={getCharacterPodium(2)} alt="" className=" h-[11rem] " />
           </div>
-          <div className="absolute -top-[7rem] left-[25rem] w-[10rem] flex justify-center">
+          <div className="absolute -top-[7rem] left-[24.5rem] w-[10rem] flex justify-center">
             <img src={getCharacterPodium(3)} alt="" className="h-[11rem]" />
           </div>
         </div>

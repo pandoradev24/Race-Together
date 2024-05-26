@@ -77,6 +77,7 @@ const Minigame = () => {
   const [ableToSpin, setAbleToSpin] = useState(true);
 
   const handleSpinClick = () => {
+    startClickSound();
     const newPrizeNumber = Math.floor(Math.random() * data.length);
     setPrizeNumber(newPrizeNumber);
     setMustSpin(true);
@@ -106,6 +107,11 @@ const Minigame = () => {
       }
     }
   }, [showPrize]);
+
+  const clickSound = new Audio("/audio/click.mp3");
+  const startClickSound = () => {
+    clickSound.play();
+  };
   return (
     <motion.div
       className="relative w-full h-full bg-[#2B2B2B] flex flex-col items-center justify-center font-['Press_Start_2P']"
@@ -120,10 +126,15 @@ const Minigame = () => {
             .toString()
             .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
         </span>
-        <img src="/assets/hamburger-icon.svg" alt="" className="ml-10 h-10" />
+        <img
+          src="/assets/hamburger-icon.svg"
+          alt=""
+          className="ml-10 h-10 cursor-pointer"
+        />
       </div>
       <Link
         to="/lobby"
+        onClick={startClickSound}
         className="absolute z-[1] bottom-10 left-[3.125rem] text-white text-[2.1875rem] font-normal"
       >
         {`<<back`}
