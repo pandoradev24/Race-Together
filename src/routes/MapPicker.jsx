@@ -5,18 +5,25 @@ import { setMap } from "../signals/GameSignal";
 const MapPicker = () => {
   const navigate = useNavigate();
   const handleMapPick = (selectedMap) => {
+    startClickSound();
     setMap(selectedMap);
     navigate("/racing-wager");
+  };
+
+  const clickSound = new Audio("/audio/click.mp3");
+  const startClickSound = () => {
+    clickSound.play();
   };
   return (
     <div className="relative w-full h-full bg-[#2B2B2B] flex items-center justify-center">
       <img
         src="/assets/hamburger-icon.svg"
         alt=""
-        className="absolute z-[1] h-10 top-10 right-[3.125rem]"
+        className="absolute z-[1] h-10 top-10 right-[3.125rem] cursor-pointer"
       />
       <Link
         to="/character-picker"
+        onClick={startClickSound}
         className="absolute z-[1] bottom-10 left-[3.125rem] text-white text-[2.1875rem] font-['Press_Start_2P'] font-normal"
       >{`<<back`}</Link>
       <div>

@@ -21,16 +21,25 @@ const items = [
 ];
 
 const Shop = () => {
+  const clickSound = new Audio("/audio/click.mp3");
+  const startClickSound = () => {
+    clickSound.play();
+  };
   return (
     <div className="relative w-full h-full bg-[#2B2B2B] flex items-center justify-center font-['Press_Start_2P']">
       <div className="absolute z-[1] top-10 right-[3.125rem] flex flex-row">
         <span className="text-white text-[1.875rem] font-normal">
           $:{user.value.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
         </span>
-        <img src="/assets/hamburger-icon.svg" alt="" className="ml-10 h-10" />
+        <img
+          src="/assets/hamburger-icon.svg"
+          alt=""
+          className="ml-10 h-10 cursor-pointer"
+        />
       </div>
       <Link
         to="/lobby"
+        onClick={startClickSound}
         className="absolute z-[1] bottom-10 left-[3.125rem] text-white text-[2.1875rem] font-normal"
       >
         {`<<back`}

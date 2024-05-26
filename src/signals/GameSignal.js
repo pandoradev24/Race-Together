@@ -63,7 +63,7 @@ export function getRacingTime() {
       time = 45;
       break;
     default:
-      time = 15;
+      time = 20;
   }
   return time;
 }

@@ -6,11 +6,15 @@ import { getMap, setRaceTrack } from "../signals/GameSignal";
 const TrackSelection = () => {
   const navigate = useNavigate();
   const handleSelectTrack = (selectedTrack) => {
+    startClickSound();
     setRaceTrack(selectedTrack);
     navigate("/racing");
   };
 
-  console.log(getMap());
+  const clickSound = new Audio("/audio/click.mp3");
+  const startClickSound = () => {
+    clickSound.play();
+  };
   return (
     <div
       className={clsx(
@@ -20,7 +24,7 @@ const TrackSelection = () => {
       <img
         src="/assets/hamburger-icon.svg"
         alt=""
-        className="absolute z-[1] h-10 top-10 right-[3.125rem]"
+        className="absolute z-[1] h-10 top-10 right-[3.125rem] cursor-pointer"
       />
       <div
         className={clsx(
@@ -52,6 +56,7 @@ const TrackSelection = () => {
       </div>
       <Link
         to="/racing-wager"
+        onClick={() => handleSelectTrack("long")}
         className="absolute z-[1] bottom-10 left-[3.125rem] text-white text-[2.1875rem] font-normal"
       >
         {`<<back`}
