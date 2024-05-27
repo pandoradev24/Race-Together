@@ -1,6 +1,7 @@
 import React from "react";
 import validator from "validator";
 import SingleInputField from "../common/SingleInputField";
+import { Link } from "react-router-dom";
 
 const Recovery = () => {
   const [email, setEmail] = React.useState("");
@@ -41,6 +42,12 @@ const Recovery = () => {
             Send
           </button>
         </form>
+        <div className="mt-4 text-center">
+          <span>Remember password? </span>
+          <Link to="/login" className="font-medium hover:underline">
+            Sign in
+          </Link>
+        </div>
       </div>
     </div>
   );

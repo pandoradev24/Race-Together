@@ -3,6 +3,15 @@ import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
   const navigate = useNavigate();
+  const clickSound = new Audio("/audio/click.mp3");
+  const startClickSound = () => {
+    clickSound.play();
+  };
+
+  const handleOnclick = () => {
+    startClickSound();
+    navigate("/login");
+  };
   return (
     <div className="w-full h-full relative flex items-center justify-center">
       <img
@@ -63,7 +72,7 @@ const Homepage = () => {
           Bet on Speed, Win with Precision
         </div>
         <button
-          onClick={() => navigate("/login")}
+          onClick={handleOnclick}
           className="w-[25rem] h-[4rem] bg-[#E6E7F2] hover:bg-[#2192B5] rounded-full shadow-[inset_5px_5px_4px_rgba(0,0,0,0.25)] text-[#2B2445] hover:text-white hover:-translate-y-[2px] active:translate-y-0 transition-all duration-300 ease-in-out"
         >
           <span className=" text-[1.75rem] font-[Lato] font-bold">Start</span>
