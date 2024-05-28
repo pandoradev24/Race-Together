@@ -2,7 +2,7 @@ import { Howl } from "howler";
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
-const usePlaySound = (soundFile, duration) => {
+const usePlaySound = (soundFile, duration, volume = 1) => {
   const soundRef = useRef(null);
   const location = useLocation();
 
@@ -10,14 +10,13 @@ const usePlaySound = (soundFile, duration) => {
     const sound = new Howl({
       src: [soundFile],
       loop: true,
+      volume: volume,
     });
-
     soundRef.current = sound;
-
     return () => {
       sound.stop();
     };
-  }, [soundFile]);
+  }, [soundFile, volume]);
 
   useEffect(() => {
     return () => {
@@ -29,10 +28,8 @@ const usePlaySound = (soundFile, duration) => {
 
   const play = () => {
     soundRef.current.play();
-
-    const fadeOutTime = 1000; // Thời gian giảm âm lượng (0.5 giây)
-    const fadeOutVolume = 0; // Âm lượng cuối cùng sau khi giảm
-
+    const fadeOutTime = 1000;
+    const fadeOutVolume = 0;
     setTimeout(() => {
       soundRef.current.fade(
         soundRef.current.volume(),
@@ -40,7 +37,6 @@ const usePlaySound = (soundFile, duration) => {
         fadeOutTime
       );
     }, duration - fadeOutTime);
-
     setTimeout(() => {
       soundRef.current.stop();
     }, duration);

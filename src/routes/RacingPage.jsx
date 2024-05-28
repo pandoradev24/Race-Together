@@ -52,7 +52,8 @@ const RacingPage = () => {
 
   const playRacingSound = usePlaySound(
     "/audio/racing.mp3",
-    getRacingTime() * 1000 + 500
+    getRacingTime() * 1000 + 500,
+    0.2
   );
 
   const playCheeringSound = usePlaySound("/audio/cheering.mp3", 23 * 1000);
