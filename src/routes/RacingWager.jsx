@@ -211,8 +211,8 @@ const RacingWager = () => {
           >
             x
           </button>
-          <h1 className="mt-[2.6875rem] text-[1.875rem] font-['Press_Start_2P'] font-normal">
-            Chon so tien
+          <h1 className="mt-[5rem] text-[1.875rem] font-['Press_Start_2P'] font-normal">
+            Choose the amount
           </h1>
           <div className="mt-[2.6875rem] w-full flex justify-center">
             <Listbox
